@@ -9,13 +9,28 @@
   Cross-Origin-Opener-Policy: same-origin
   Cross-Origin-Resource-Policy: same-origin
 
+/hero-*.webp
+  Cache-Control: public, max-age=31536000, immutable
+
 /hero-*.jpg
+  Cache-Control: public, max-age=31536000, immutable
+
+/program-*.webp
   Cache-Control: public, max-age=31536000, immutable
 
 /program-*.jpg
   Cache-Control: public, max-age=31536000, immutable
 
+/logo*.webp
+  Cache-Control: public, max-age=31536000, immutable
+
 /logo*.png
+  Cache-Control: public, max-age=31536000, immutable
+
+/favicon.ico
+  Cache-Control: public, max-age=31536000, immutable
+
+/apple-touch-icon.png
   Cache-Control: public, max-age=31536000, immutable
 
 /_astro/*

@@ -1,9 +1,9 @@
 ---
 const heroImages = [
-  { src: '/hero-1.jpg', alt: 'Kegiatan Yayasan Alhidayah 1' },
-  { src: '/hero-2.jpg', alt: 'Kegiatan Yayasan Alhidayah 2' },
-  { src: '/hero-3.jpg', alt: 'Kegiatan Yayasan Alhidayah 3' },
-  { src: '/hero-4.jpg', alt: 'Kegiatan Yayasan Alhidayah 4' },
+  { src: '/hero-1.webp', fallback: '/hero-1.jpg', alt: 'Kegiatan Yayasan Alhidayah 1' },
+  { src: '/hero-2.webp', fallback: '/hero-2.jpg', alt: 'Kegiatan Yayasan Alhidayah 2' },
+  { src: '/hero-3.webp', fallback: '/hero-3.jpg', alt: 'Kegiatan Yayasan Alhidayah 3' },
+  { src: '/hero-4.webp', fallback: '/hero-4.jpg', alt: 'Kegiatan Yayasan Alhidayah 4' },
 ];
 ---
 
@@ -12,17 +12,20 @@ const heroImages = [
     <div class="hero-C on-deep">
       <div class="hero-bg">
         {heroImages.map((img, i) => (
-          <img
-            class={`hero-slide ${i === 0 ? 'active' : ''}`}
-            src={img.src}
-            alt={img.alt}
-            loading={i === 0 ? 'eager' : 'lazy'}
-            fetchpriority={i === 0 ? 'high' : undefined}
-            decoding={i === 0 ? 'sync' : 'async'}
-            width="1800"
-            height="1100"
-            data-hero-slide={i}
-          />
+          <picture>
+            <source srcset={img.src} type="image/webp" />
+            <img
+              class={`hero-slide ${i === 0 ? 'active' : ''}`}
+              src={img.fallback}
+              alt={img.alt}
+              loading={i === 0 ? 'eager' : 'lazy'}
+              fetchpriority={i === 0 ? 'high' : undefined}
+              decoding={i === 0 ? 'sync' : 'async'}
+              width="1000"
+              height="449"
+              data-hero-slide={i}
+            />
+          </picture>
         ))}
       </div>
       <div class="hero-overlay">
