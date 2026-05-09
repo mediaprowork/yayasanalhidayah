@@ -5,18 +5,21 @@ const items = [
     title: 'Mushaf Orang Tua',
     desc: "Mushaf Al-Qur'an khusus untuk orang tua dengan ukuran huruf yang lapang dan nyaman dibaca, didistribusikan ke masjid dan majelis sepuh.",
     src: '/program-mushaf-orangtua.jpg',
+    href: 'https://yayasanalhidayah.com/mushaf-orangtua',
   },
   {
     tag: 'Wakaf',
     title: 'Mushaf Pelosok',
     desc: "Distribusi mushaf ke desa-desa pelosok, TPQ, dan pesantren yang masih sangat membutuhkan akses Al-Qur'an untuk pembelajaran harian.",
     src: '/program-mushaf-pelosok.jpg',
+    href: 'https://yayasanalhidayah.com/mushaf-pelosok',
   },
   {
     tag: 'Tebusan',
     title: 'Kafarat',
     desc: 'Penyaluran kafarat sesuai syariat — langsung kepada fakir miskin, dengan pendampingan dan dokumentasi proses sampai diterima.',
     src: '/program-kafarat.jpg',
+    href: 'https://yayasanalhidayah.com/kafarat-rfi',
   },
 ];
 ---
@@ -44,7 +47,7 @@ const items = [
           <div class="program-body">
             <h3>{p.title}</h3>
             <p>{p.desc}</p>
-            <a href="#donor" class="program-cta">
+            <a href={p.href} class="program-cta" target="_blank" rel="noopener noreferrer">
               Titipkan amanah <span class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
             </a>
           </div>
