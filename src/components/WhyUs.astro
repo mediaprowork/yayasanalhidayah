@@ -1,0 +1,64 @@
+---
+const points = [
+  {
+    n: '01',
+    t: 'Legal Resmi & Berbadan Hukum',
+    d: 'Keputusan Kemenkumham RI No. Administrasi Hukum Umum 0038197 AH.01.12 Tahun 2025. NPWP 317143014421000.',
+    icon: 'shield',
+  },
+  {
+    n: '02',
+    t: 'Amanah & Transparan',
+    d: 'Setiap dana muwakif dikelola secara terbuka dan dapat dipertanggungjawabkan. Laporan penyaluran penerima manfaat disampaikan berkala.',
+    icon: 'eye',
+  },
+  {
+    n: '03',
+    t: 'Fokus pada Dampak Nyata',
+    d: 'Kafarat dan wakaf disalurkan langsung kepada fakir miskin, masjid, TPQ, dan pesantren yang membutuhkan.',
+    icon: 'pulse',
+  },
+];
+---
+
+<section class="why section-pad" id="mengapa">
+  <div class="container" style="position: relative;">
+    <div class="why-head">
+      <div data-reveal>
+        <div class="eyebrow"><span class="section-num" style="color: var(--ink-on-deep-2);">02 / Mengapa Kami</span></div>
+        <h2>Mengapa berkontribusi melalui <em>Yayasan Alhidayah?</em></h2>
+      </div>
+      <p data-reveal>
+        Karena yang Anda titipkan bukan sekadar uang — tapi amanah dosa, pahala, dan harapan seseorang untuk bertahan hidup.
+      </p>
+    </div>
+    <div class="why-grid">
+      {points.map((p) => (
+        <div class="why-card" data-reveal>
+          <span class="num">{p.n}</span>
+          <div class="icon">
+            {p.icon === 'shield' && (
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2 4 5v7c0 5 3.5 9 8 10 4.5-1 8-5 8-10V5l-8-3Z"/>
+                <path d="m9 12 2 2 4-4"/>
+              </svg>
+            )}
+            {p.icon === 'eye' && (
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            )}
+            {p.icon === 'pulse' && (
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 12h4l3-8 4 16 3-8h4"/>
+              </svg>
+            )}
+          </div>
+          <h3>{p.t}</h3>
+          <p>{p.d}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

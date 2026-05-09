@@ -1,0 +1,120 @@
+---
+const testimonials = [
+  {
+    initial: 'H',
+    name: 'Hamba Allah',
+    role: 'Muwakif Mushaf Orang Tua',
+    stars: 5,
+    quote: 'Alhamdulillah, melalui wakaf mushaf ini saya bisa menghadiahkan <em>amal jariyah</em> untuk orang tua tercinta. Terima kasih atas program wakaf mushaf ini. Saya bersyukur diberi kesempatan menghadiahkan pahala yang tak terputus untuk orang tua tercinta. Semoga setiap ayat yang dibaca menjadi <em>cahaya</em> dan pahala yang terus mengalir untuk beliau.',
+  },
+  {
+    initial: 'F',
+    name: 'Bunda Farida Pasha',
+    role: 'Donatur Istiqomah Yayasan Alhidayah',
+    stars: 5,
+    quote: 'Awalnya ragu, tapi setelah melihat laporan penyaluran dari Yayasan Alhidayah, hati saya benar-benar <em>tenang</em>. Semoga wakaf ini menjadi amal jariyah bagi saya dan keluarga. Terima kasih Yayasan Alhidayah membuat saya yakin, kebaikan kecil bisa <em>berdampak besar</em> bagi para santri.',
+  },
+  {
+    initial: 'A',
+    name: 'Bapak Ahmad Sholikhin',
+    role: 'Donatur Yayasan Alhidayah',
+    stars: 5,
+    quote: 'Alhamdulillah, melalui Yayasan Alhidayah saya dimudahkan menunaikan <em>kafarat jima\'</em>. Semoga Allah menerima amal ini sebagai bentuk taubat dan perbaikan diri, hati saya terasa lebih <em>tenang</em> setelah menunaikan kewajiban ini.',
+  },
+  {
+    initial: 'W',
+    name: 'Bunda Wulandari Sofian',
+    role: 'Donatur Yayasan Alhidayah',
+    stars: 5,
+    quote: 'Alhamdulillah bisa menunaikan kafarat sumpah palsu melalui Yayasan Alhidayah, saya merasa sangat <em>terbantu</em> dengan adanya program kafarat sumpah palsu ini. Penjelasannya jelas dan penyalurannya membantu <em>fakir miskin</em>.',
+  },
+  {
+    initial: 'M',
+    name: 'Bunda Mawaddah',
+    role: 'Donatur Yayasan Alhidayah',
+    stars: 5,
+    quote: 'Alhamdulillah, melalui Yayasan Alhidayah saya merasa <em>dimudahkan</em> menunaikan kafarat dengan benar. Terima kasih telah menjadi jalan taubat dan <em>kepedulian</em> kepada sesama.',
+  },
+];
+---
+
+<section class="testimonial section-pad" id="testimoni">
+  <div class="container">
+    <div class="testi-grid">
+      <div data-reveal>
+        <div class="eyebrow"><span class="section-num">04 / Testimoni</span></div>
+        <h2 class="display" style="font-size: clamp(32px, 4vw, 52px); margin: 16px 0 28px;">
+          Kata mereka,<br/>setelah <em>menitipkan amanah.</em>
+        </h2>
+        <div class="testi-attr-wrap" id="testi-attr-wrap">
+          {testimonials.map((t, i) => (
+            <div class={`testi-attr ${i === 0 ? 'active' : ''}`} data-testi-attr={i}>
+              <div class="av">{t.initial}</div>
+              <div>
+                <div class="name">{t.name}</div>
+                <div class="role">{t.role}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="testi-dots" id="testi-dots">
+          {testimonials.map((_, i) => (
+            <button class={`testi-dot ${i === 0 ? 'active' : ''}`} data-dot={i} aria-label={`Testimoni ${i + 1}`} />
+          ))}
+        </div>
+      </div>
+      <div class="testi-quote" data-reveal id="testi-quote-wrap">
+        {testimonials.map((t, i) => (
+          <div class={`testi-slide ${i === 0 ? 'active' : ''}`} data-testi-slide={i}>
+            <div class="testi-stars">
+              {Array.from({ length: t.stars }).map(() => (
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
+              ))}
+            </div>
+            <blockquote set:html={t.quote} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  (function() {
+    var slides = document.querySelectorAll('[data-testi-slide]');
+    var attrs = document.querySelectorAll('[data-testi-attr]');
+    var dots = document.querySelectorAll('[data-dot]');
+    var current = 0;
+    var total = slides.length;
+    var interval = 5000;
+    var timer;
+
+    function goTo(idx) {
+      slides[current].classList.remove('active');
+      attrs[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = idx;
+      slides[current].classList.add('active');
+      attrs[current].classList.add('active');
+      dots[current].classList.add('active');
+    }
+
+    function next() {
+      goTo((current + 1) % total);
+    }
+
+    function startTimer() {
+      clearInterval(timer);
+      timer = setInterval(next, interval);
+    }
+
+    dots.forEach(function(dot, i) {
+      dot.addEventListener('click', function() {
+        goTo(i);
+        startTimer();
+      });
+    });
+
+    startTimer();
+  })();
+</script>

@@ -1,0 +1,65 @@
+---
+const heroImages = [
+  { src: '/hero-1.jpg', alt: 'Kegiatan Yayasan Alhidayah 1' },
+  { src: '/hero-2.jpg', alt: 'Kegiatan Yayasan Alhidayah 2' },
+  { src: '/hero-3.jpg', alt: 'Kegiatan Yayasan Alhidayah 3' },
+  { src: '/hero-4.jpg', alt: 'Kegiatan Yayasan Alhidayah 4' },
+];
+---
+
+<section class="hero" id="top">
+  <div class="container">
+    <div class="hero-C on-deep">
+      <div class="hero-bg">
+        {heroImages.map((img, i) => (
+          <img
+            class={`hero-slide ${i === 0 ? 'active' : ''}`}
+            src={img.src}
+            alt={img.alt}
+            loading={i === 0 ? 'eager' : 'lazy'}
+            width="1800"
+            height="1100"
+            data-hero-slide={i}
+          />
+        ))}
+      </div>
+      <div class="hero-overlay">
+        <div class="hero-overlay-content">
+          <div>
+            <div class="eyebrow" data-reveal>Yayasan Alhidayah · Bandung Barat</div>
+            <h1 class="display hero-h1" data-reveal style="margin-top: 16px;">
+              Belajar tidak <em>selalu</em> nyaman, tapi selalu <em>bermakna.</em>
+            </h1>
+          </div>
+          <div data-reveal>
+            <p class="lede hero-lede">
+              Setiap sudut ruangan ini menyimpan proses: <strong style="color: var(--ink-on-deep);">mencoba, gagal, memahami, lalu tumbuh</strong> — perjalanan amanah yang kami jaga.
+            </p>
+            <div class="ctas" style="margin-top: 24px;">
+              <a class="btn btn-primary" href="#program">
+                Lihat Program Donasi <span class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+              </a>
+              <a class="btn btn-ghost" href="#tentang">
+                Tentang Yayasan
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-meta">
+      <div class="hero-meta-item" data-reveal>
+        <div class="num" data-counter="2025"></div>
+        <div class="lbl">Berbadan Hukum</div>
+      </div>
+      <div class="hero-meta-item" data-reveal>
+        <div class="num" data-counter="100" data-suffix="%"></div>
+        <div class="lbl">Tepat Sasaran</div>
+      </div>
+      <div class="hero-meta-item" data-reveal>
+        <div class="num" data-counter="3"></div>
+        <div class="lbl">Program Aktif</div>
+      </div>
+    </div>
+  </div>
+</section>

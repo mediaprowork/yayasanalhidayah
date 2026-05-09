@@ -1,0 +1,138 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Yayasan Alhidayah — Lembaga sosial & keagamaan dari Bandung Barat. Wakaf mushaf, kafarat, dan bantuan sosial.' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+
+  <!-- SEO -->
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href={Astro.url.href} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={Astro.url.href} />
+  <meta property="og:locale" content="id_ID" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <link rel="icon" type="image/png" href="/logo.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Theme init (prevent flash) -->
+  <script is:inline>
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+    })();
+  </script>
+</head>
+<body>
+  <slot />
+
+  <!-- Scroll reveal -->
+  <script is:inline>
+    (function() {
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('in');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      document.querySelectorAll('[data-reveal], [data-reveal-img]').forEach(function(el) {
+        io.observe(el);
+      });
+    })();
+  </script>
+
+  <!-- Playful counter -->
+  <script is:inline>
+    (function() {
+      function easeOutBack(t) {
+        var c1 = 1.70158;
+        var c3 = c1 + 1;
+        return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2);
+      }
+
+      function animateCounter(el) {
+        var target = parseInt(el.getAttribute('data-counter'), 10);
+        var suffix = el.getAttribute('data-suffix') || '';
+        var duration = target > 100 ? 2000 : 1200;
+        var start = null;
+
+        el.textContent = '0' + suffix;
+        el.style.display = 'inline-block';
+
+        function step(ts) {
+          if (!start) start = ts;
+          var progress = Math.min((ts - start) / duration, 1);
+          var eased = easeOutBack(progress);
+          var current = Math.round(eased * target);
+          if (current > target) current = target;
+
+          el.textContent = current + suffix;
+
+          if (progress < 1) {
+            el.style.transform = 'scale(' + (1 + 0.08 * Math.sin(progress * Math.PI * 3) * (1 - progress)) + ')';
+            requestAnimationFrame(step);
+          } else {
+            el.textContent = target + suffix;
+            el.style.transform = 'scale(1)';
+            el.classList.add('counter-done');
+          }
+        }
+
+        requestAnimationFrame(step);
+      }
+
+      var counters = document.querySelectorAll('[data-counter]');
+      var cio = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) {
+            animateCounter(e.target);
+            cio.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      counters.forEach(function(el) { cio.observe(el); });
+    })();
+  </script>
+
+  <!-- Hero slideshow -->
+  <script is:inline>
+    (function() {
+      var heroSlides = document.querySelectorAll('.hero-slide');
+      if (heroSlides.length > 1) {
+        var cur = 0;
+        window.setInterval(function() {
+          heroSlides[cur].classList.remove('active');
+          cur = (cur + 1) % heroSlides.length;
+          heroSlides[cur].classList.add('active');
+        }, 3000);
+      }
+    })();
+  </script>
+</body>
+</html>

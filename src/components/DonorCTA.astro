@@ -1,0 +1,39 @@
+---
+const items = [
+  'Kafarat dapat terus disalurkan kepada yang berhak.',
+  'Wakaf mushaf menjangkau lebih banyak desa pelosok.',
+  'Program kebaikan berjalan secara berkelanjutan.',
+];
+---
+
+<section class="section-pad" id="donor">
+  <div class="container">
+    <div class="donor-cta on-deep" data-reveal>
+      <div class="donor-grid">
+        <div>
+          <div class="eyebrow"><span class="section-num" style="color: var(--ink-on-deep-2);">05 / Donatur Tetap</span></div>
+          <h2>Jangan pulang dengan <em>kewajiban</em><br/>yang belum selesai.</h2>
+          <p style="color: var(--ink-on-deep-2); font-size: 17px; line-height: 1.6; margin-top: 24px; max-width: 46ch;">
+            Dengan menjadi <strong style="color: var(--accent); font-weight: 600;">donatur tetap</strong>, Anda ikut menjaga agar setiap amanah hari ini tidak berhenti di hari esok.
+          </p>
+          <div class="ctas" style="margin-top: 36px;">
+            <a class="btn btn-primary" href="#program">
+              Selesaikan Hari Ini <span class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </a>
+            <a class="btn btn-ghost" href="#kontak">
+              Hubungi Kami
+            </a>
+          </div>
+        </div>
+        <ul class="donor-list">
+          {items.map((item, i) => (
+            <li data-reveal>
+              <span class="num">0{i + 1}</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
