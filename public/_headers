@@ -9,16 +9,10 @@
   Cross-Origin-Opener-Policy: same-origin
   Cross-Origin-Resource-Policy: same-origin
 
-/hero-*.webp
+/hero/*
   Cache-Control: public, max-age=31536000, immutable
 
-/hero-*.jpg
-  Cache-Control: public, max-age=31536000, immutable
-
-/program-*.webp
-  Cache-Control: public, max-age=31536000, immutable
-
-/program-*.jpg
+/program/*
   Cache-Control: public, max-age=31536000, immutable
 
 /logo*.webp

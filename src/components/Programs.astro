@@ -4,24 +4,21 @@ const items = [
     tag: 'Wakaf',
     title: 'Mushaf Orang Tua',
     desc: "Mushaf Al-Qur'an khusus untuk orang tua dengan ukuran huruf yang lapang dan nyaman dibaca, didistribusikan ke masjid dan majelis sepuh.",
-    src: '/program-mushaf-orangtua.webp',
-    fallback: '/program-mushaf-orangtua.jpg',
+    src: '/program/program-mushaf-orangtua.webp',
     href: 'https://yayasanalhidayah.com/mushaf-orangtua',
   },
   {
     tag: 'Wakaf',
     title: 'Mushaf Pelosok',
     desc: "Distribusi mushaf ke desa-desa pelosok, TPQ, dan pesantren yang masih sangat membutuhkan akses Al-Qur'an untuk pembelajaran harian.",
-    src: '/program-mushaf-pelosok.webp',
-    fallback: '/program-mushaf-pelosok.jpg',
+    src: '/program/program-mushaf-pelosok.webp',
     href: 'https://yayasanalhidayah.com/mushaf-pelosok',
   },
   {
     tag: 'Tebusan',
     title: 'Kafarat',
     desc: 'Penyaluran kafarat sesuai syariat — langsung kepada fakir miskin, dengan pendampingan dan dokumentasi proses sampai diterima.',
-    src: '/program-kafarat.webp',
-    fallback: '/program-kafarat.jpg',
+    src: '/program/program-kafarat.webp',
     href: 'https://yayasanalhidayah.com/kafarat-rfi',
   },
 ];
@@ -44,10 +41,7 @@ const items = [
       {items.map((p) => (
         <article class="program-card" data-reveal>
           <div class="program-img skeleton">
-            <picture>
-              <source srcset={p.src} type="image/webp" />
-              <img src={p.fallback} alt={p.title} loading="lazy" decoding="async" width="800" height="600" />
-            </picture>
+            <img src={p.src} alt={p.title} loading="lazy" decoding="async" width="800" height="600" />
             <span class="program-tag">{p.tag}</span>
           </div>
           <div class="program-body">
